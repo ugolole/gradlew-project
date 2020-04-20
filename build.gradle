@@ -1,0 +1,36 @@
+/*
+    A task is an object 
+        - A task has an API
+        - A task has a list of activities
+    A gradle buid is a program 
+ */
+
+task hello
+task world
+task helloWorld
+
+task test
+
+test {
+    doLast{
+        print "Method inside function"
+    }
+    println "This is a sample test text"
+}
+
+helloWorld {
+    dependsOn = [world, hello]
+}
+
+world{
+    dependsOn << hello
+    doLast{
+        println " world"
+    }
+}
+
+hello{
+    doLast{
+        print "hello,"
+    }
+}
